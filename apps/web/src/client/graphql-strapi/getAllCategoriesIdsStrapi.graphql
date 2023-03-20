@@ -1,0 +1,10 @@
+query GetAllCategoriesIdsStrapi {
+  categories(filters:{archive:{eq:false}}) {
+    data {
+      attributes {
+        notionItemId
+        slug
+      }
+    }
+  }
+}

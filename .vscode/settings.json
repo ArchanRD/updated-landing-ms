@@ -1,0 +1,4 @@
+{
+  "graphql-config.load.rootDir": "./apps/web/",
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}

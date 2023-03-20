@@ -1,0 +1,43 @@
+{
+  "name": "strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-color-picker": "^4.5.4",
+    "@strapi/plugin-graphql": "4.5.4",
+    "@strapi/plugin-i18n": "4.5.4",
+    "@strapi/plugin-users-permissions": "4.5.4",
+    "@strapi/provider-upload-aws-s3": "^4.5.6",
+    "@strapi/strapi": "4.5.4",
+    "better-sqlite3": "7.4.6",
+    "fuzzysort": "^2.0.4",
+    "pg": "^8.9.0",
+    "react-select": "^5.7.0",
+    "react-select-search": "^4.1.6"
+  },
+  "resolutions": {
+    "graphql": "^16.6.0",
+    "**/graphql": "^16.6.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "7cfefbcb-ba15-496e-afd9-98296634872f"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "raw-loader": "^4.0.2"
+  }
+}

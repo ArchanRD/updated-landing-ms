@@ -1,0 +1,87 @@
+query GetResourcesInCategoryStrapi($categorySlug: StringFilterInput!) {
+  categories(filters: { and: [ {slug: $categorySlug},{archive:{eq:false}}]}) {
+    data {
+      attributes {
+        notionItemId
+        name
+        description
+        logo {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        bgColor
+        RelatedContent {
+          data {
+            attributes {
+              notionItemId
+              title
+              description
+              media {
+                data {
+                  attributes {
+                    url
+                    previewUrl
+                    name
+                    caption
+                  }
+                }
+              }
+              archive
+              videoUrl
+              RelatedContentType
+            }
+          }
+        }
+      }
+    }
+  }
+  resources(filters: { and: [{category: { slug: $categorySlug }}{archive:{eq:false}}] }) {
+    data {
+      id
+      attributes {
+        notionItemId
+        name
+        slug
+        shortDescription
+        description
+        archive
+        logo {
+          data {
+            attributes {
+              url
+              previewUrl
+            }
+          }
+        }
+        analyticsURL
+        tags {
+          data {
+            attributes {
+              notionItemId
+              name
+            }
+          }
+        }
+        url
+        type
+        address {
+          ... on ComponentAddressAddress {
+            id
+            cityInfo
+          }
+        }
+        category {
+          data {
+            attributes {
+              notionItemId
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

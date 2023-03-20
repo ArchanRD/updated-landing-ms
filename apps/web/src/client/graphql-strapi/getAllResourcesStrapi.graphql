@@ -1,0 +1,11 @@
+query getAllResourcesStrapi {
+  resources(filters:{archive:{eq:false}}) {
+    data {
+      attributes {
+        notionItemId
+        slug
+        updatedAt
+      }
+    }
+  }
+}

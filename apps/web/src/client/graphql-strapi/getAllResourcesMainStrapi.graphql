@@ -1,0 +1,47 @@
+query getAllResourcesMainStrapi {
+  resources(filters:{archive:{eq:false}}) {
+   data {
+      attributes {
+        notionItemId
+        name
+        slug
+        shortDescription
+        description
+        archive
+        logo{
+          data {
+            attributes {
+              url
+              previewUrl
+            }
+          }
+        }
+        analyticsURL
+        tags {
+          data {
+            attributes {
+              notionItemId
+              name
+            }
+          }
+        }
+        type 
+        address {
+          	... on ComponentAddressAddress {
+              id
+              cityInfo
+            }
+        }
+         category {
+          data {
+            attributes {
+              notionItemId
+              name
+            }
+          }
+        }
+      }
+      
+    }
+  }
+}

@@ -1,0 +1,27 @@
+scalar DateTime
+
+type Mutation {
+  removeSavedResource(resourceId: String!): UserSavedResource
+  saveResource(resourceId: String!): UserSavedResource!
+}
+
+type Query {
+  currentUser: User
+}
+
+type User {
+  email: String!
+  emailVerified: DateTime
+  id: ID!
+  image: String
+  name: String!
+  savedResources: [UserSavedResource!]!
+}
+
+type UserSavedResource {
+  id: ID!
+  resourceId: String!
+  savedAt: DateTime
+  user: User!
+  userId: String!
+}

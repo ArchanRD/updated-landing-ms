@@ -1,0 +1,11 @@
+{
+  "extends": "@ms/tsconfig/base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "./build",
+    "esModuleInterop": true
+  },
+  "include": ["src", "generators"],
+  "exclude": ["node_modules"]
+}

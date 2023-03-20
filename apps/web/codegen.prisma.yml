@@ -1,0 +1,37 @@
+overwrite: true
+errorsOnly: true
+schema: build-schema.js
+documents:
+  - "**/*.graphql"
+  - "!src/server/graphql/schema.graphql"
+  - "!src/client/graphql-strapi"
+
+hooks:
+  afterAllFileWrite:
+    - "prettier --write"
+
+generates:
+  src/server/graphql/schema.graphql:
+    plugins:
+      - schema-ast
+
+  src/client/graphql/types.generated.ts:
+    plugins:
+      - typescript
+    config:
+      scalars:
+        DateTime: Date
+
+  ./:
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: src/client/graphql/types.generated.ts
+    plugins:
+      - typescript-operations
+      # - typescript-graphql-request
+      - typescript-react-query
+    config:
+      scalars:
+        DateTime: Date
+      fetcher: graphql-request
+      exposeFetcher: true

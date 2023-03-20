@@ -1,0 +1,36 @@
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        "build/**",
+        ".next/**",
+        "outline/**",
+        "flags/**",
+        "duocolor/**",
+        "duotone/**",
+        "integration/**"
+      ]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "web#build": {
+      "dependsOn": [
+        "@untitledui/icons#build",
+        "@ms/clients#build"
+      ]
+    },
+    "deploy:serverless:prod": {
+      "dependsOn": [
+        "@ms/clients#build"
+      ]
+    }
+  }
+}

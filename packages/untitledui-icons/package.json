@@ -1,0 +1,42 @@
+{
+  "name": "@untitledui/icons",
+  "version": "1.0.0",
+  "description": "icons for untitled-ui design system",
+  "author": "Tirth Gajjar",
+  "private": true,
+  "main": "./index.js",
+  "types": "./src/types.d.ts",
+  "files": [
+    "outline/*",
+    "duotone/*",
+    "duocolor/*",
+    "integration/*",
+    "social/*",
+    "README.md"
+  ],
+  "scripts": {
+    "prepublishOnly": "yarn run build",
+    "build": "yarn run build-outline && yarn run build-duotone && yarn run build-duocolor && yarn run build-integration && yarn build-social && yarn build-flags && yarn run build-react",
+    "build-react": "node ./scripts/build.js",
+    "build-outline": "rimraf ./outline ./optimized/outline && svgo --config=svgo-outline.config.js -r -f ./src/outline -o ./optimized/outline --pretty --indent=2 && copyfiles -u 2 \"optimized/outline/**/*\" \"./outline\"",
+    "build-duotone": "rimraf ./duotone ./optimized/duotone && svgo --config=svgo-outline.config.js -r -f ./src/duotone -o ./optimized/duotone --pretty --indent=2 && copyfiles -u 2 \"optimized/duotone/**/*\" \"./duotone\"",
+    "build-duocolor": "rimraf ./duocolor ./optimized/duocolor && svgo --config=svgo-outline.config.js -r -f ./src/duocolor -o ./optimized/duocolor --pretty --indent=2 && copyfiles -u 2 \"optimized/duocolor/**/*\" \"./duocolor\"",
+    "build-integration": "rimraf ./integration ./optimized/integration && svgo --config=svgo-colored.config.js -r -f ./src/integration -o ./optimized/integration --pretty --indent=2 && copyfiles -u 2 \"optimized/integration/**/*\" \"./integration\"",
+    "build-flags": "rimraf ./flags ./optimized/flags && svgo --config=svgo-colored.config.js -r -f ./src/flags -o ./optimized/flags --pretty --indent=2 && copyfiles -u 2 \"optimized/flags/**/*\" \"./flags\"",
+    "build-social": "rimraf ./social ./optimized/social && svgo --config=svgo-colored.config.js -r -f ./src/social/color -o ./optimized/social --pretty --indent=2 && svgo --config=svgo-solid.config.js -r -f ./src/social/monotone -o ./optimized/social --pretty --indent=2 && copyfiles -u 2 \"optimized/social/**/*\" \"./social\""
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/plugin-transform-react-jsx": "^7.17.12",
+    "@svgr/core": "^6.2.1",
+    "camelcase": "6.3.0",
+    "copyfiles": "^2.4.1",
+    "countries-code": "^1.1.0",
+    "globby": "^13.1.1",
+    "rimraf": "^3.0.2",
+    "svgo": "^2.8.0"
+  },
+  "dependencies": {
+    "copyfiles": "^2.4.1"
+  }
+}

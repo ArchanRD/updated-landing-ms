@@ -1,0 +1,5 @@
+{
+  "extends": "@ms/tsconfig/node16",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}

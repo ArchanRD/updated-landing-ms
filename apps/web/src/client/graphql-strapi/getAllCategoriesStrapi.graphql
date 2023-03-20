@@ -1,0 +1,43 @@
+# Write your query or mutation here
+query GetAllCategoriesStrapi {
+  categories(filters: { archive: { eq: false } }) {
+    data {
+      attributes {
+        notionItemId
+        name
+        slug
+        bgColor
+        archive
+        description
+        logo {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        seoDescription
+        seoKeywords
+        seoTitle
+        shortDescription
+        updatedAt
+        resourceCount
+      }
+    }
+  }
+  tags {
+    data {
+      id
+      attributes {
+        name
+      }
+    }
+  }
+  cities(countryFilter: true) {
+    data {
+      attributes {
+        country
+      }
+    }
+  }
+}

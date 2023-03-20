@@ -1,0 +1,1466 @@
+input BooleanFilterInput {
+  and: [Boolean]
+  between: [Boolean]
+  contains: Boolean
+  containsi: Boolean
+  endsWith: Boolean
+  eq: Boolean
+  eqi: Boolean
+  gt: Boolean
+  gte: Boolean
+  in: [Boolean]
+  lt: Boolean
+  lte: Boolean
+  ne: Boolean
+  not: BooleanFilterInput
+  notContains: Boolean
+  notContainsi: Boolean
+  notIn: [Boolean]
+  notNull: Boolean
+  null: Boolean
+  or: [Boolean]
+  startsWith: Boolean
+}
+
+type Category {
+  RelatedContent(
+    filters: RelatedContentFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): RelatedContentRelationResponseCollection
+  Resources(
+    filters: ResourceFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): ResourceRelationResponseCollection
+  archive: Boolean
+  bgColor: String!
+  createdAt: DateTime
+  description: String!
+  id: String
+  logo: UploadFileEntityResponse
+  name: String!
+  notionItemId: String
+  order: Int
+  publishedAt: DateTime
+  relatedCategories(
+    filters: CategoryFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): CategoryRelationResponseCollection
+  resourceCount: Int
+  seoDescription: String
+  seoKeywords: String
+  seoTitle: String
+  shortDescription: String
+  slug: String!
+  updatedAt: DateTime
+}
+
+type CategoryEntity {
+  attributes: Category
+  id: ID
+}
+
+type CategoryEntityResponse {
+  data: CategoryEntity
+}
+
+type CategoryEntityResponseCollection {
+  data: [CategoryEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CategoryFiltersInput {
+  RelatedContent: RelatedContentFiltersInput
+  Resources: ResourceFiltersInput
+  and: [CategoryFiltersInput]
+  archive: BooleanFilterInput
+  bgColor: StringFilterInput
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: CategoryFiltersInput
+  notionItemId: StringFilterInput
+  or: [CategoryFiltersInput]
+  order: IntFilterInput
+  publishedAt: DateTimeFilterInput
+  relatedCategories: CategoryFiltersInput
+  seoDescription: StringFilterInput
+  seoKeywords: StringFilterInput
+  seoTitle: StringFilterInput
+  shortDescription: StringFilterInput
+  slug: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input CategoryInput {
+  RelatedContent: [ID]
+  Resources: [ID]
+  archive: Boolean
+  bgColor: String
+  description: String
+  logo: ID
+  name: String
+  notionItemId: String
+  order: Int
+  publishedAt: DateTime
+  relatedCategories: [ID]
+  seoDescription: String
+  seoKeywords: String
+  seoTitle: String
+  shortDescription: String
+  slug: String
+}
+
+type CategoryRelationResponseCollection {
+  data: [CategoryEntity!]!
+}
+
+type City {
+  city: String
+  country: String
+  createdAt: DateTime
+  publishedAt: DateTime
+  state: String
+  updatedAt: DateTime
+}
+
+type CityEntity {
+  attributes: City
+  id: ID
+}
+
+type CityEntityResponse {
+  data: CityEntity
+}
+
+type CityEntityResponseCollection {
+  data: [CityEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CityFiltersInput {
+  and: [CityFiltersInput]
+  city: StringFilterInput
+  country: StringFilterInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: CityFiltersInput
+  or: [CityFiltersInput]
+  publishedAt: DateTimeFilterInput
+  state: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input CityInput {
+  city: String
+  country: String
+  publishedAt: DateTime
+  state: String
+}
+
+type ComponentAddressAddress {
+  address: String
+  cityInfo: JSON
+  id: ID!
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input DateTimeFilterInput {
+  and: [DateTime]
+  between: [DateTime]
+  contains: DateTime
+  containsi: DateTime
+  endsWith: DateTime
+  eq: DateTime
+  eqi: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime]
+  lt: DateTime
+  lte: DateTime
+  ne: DateTime
+  not: DateTimeFilterInput
+  notContains: DateTime
+  notContainsi: DateTime
+  notIn: [DateTime]
+  notNull: Boolean
+  null: Boolean
+  or: [DateTime]
+  startsWith: DateTime
+}
+
+enum ENUM_PRODUCT_CURRENCY {
+  AED
+  AFN
+  ALL
+  AMD
+  ANG
+  AOA
+  AQD
+  ARS
+  AUD
+  AZN
+  BAM
+  BBD
+  BDT
+  BGN
+  BHD
+  BIF
+  BMD
+  BND
+  BOB
+  BRL
+  BSD
+  BWP
+  BYR
+  BZD
+  CAD
+  CDF
+  CHF
+  CLP
+  CNY
+  COP
+  CRC
+  CUP
+  CVE
+  CYP
+  CZK
+  Code
+  DJF
+  DKK
+  DOP
+  DZD
+  ECS
+  EEK
+  EGP
+  ETB
+  EUR
+  FJD
+  FKP
+  GBP
+  GEL
+  GGP
+  GHS
+  GIP
+  GMD
+  GNF
+  GTQ
+  GYD
+  HKD
+  HNL
+  HRK
+  HTG
+  HUF
+  IDR
+  ILS
+  INR
+  IQD
+  IRR
+  ISK
+  JMD
+  JOD
+  JPY
+  KES
+  KGS
+  KHR
+  KMF
+  KPW
+  KRW
+  KWD
+  KYD
+  KZT
+  LAK
+  LBP
+  LKR
+  LRD
+  LSL
+  LTL
+  LVL
+  LYD
+  MAD
+  MDL
+  MGA
+  MKD
+  MMK
+  MNT
+  MOP
+  MRO
+  MTL
+  MUR
+  MVR
+  MWK
+  MXN
+  MYR
+  MZN
+  NAD
+  NGN
+  NIO
+  NOK
+  NPR
+  NZD
+  OMR
+  PAB
+  PEN
+  PGK
+  PHP
+  PKR
+  PLN
+  PYG
+  QAR
+  RON
+  RSD
+  RUB
+  RWF
+  SAR
+  SBD
+  SCR
+  SDG
+  SEK
+  SGD
+  SKK
+  SLL
+  SOS
+  SRD
+  STD
+  SVC
+  SYP
+  SZL
+  THB
+  TJS
+  TMT
+  TND
+  TOP
+  TRY
+  TTD
+  TWD
+  TZS
+  UAH
+  UGX
+  USD
+  UYU
+  UZS
+  VEF
+  VND
+  VUV
+  XAF
+  XCD
+  XOF
+  XPF
+  YER
+  ZAR
+  ZMK
+  ZWD
+}
+
+enum ENUM_RELATEDCONTENT_RELATEDCONTENTTYPE {
+  Related_Blog
+  Stats
+  Youtube_Video
+}
+
+enum ENUM_RESOURCE_TYPE {
+  Business_service
+  Data_and_analytics
+  Products
+  Services
+  Social_service
+}
+
+enum ENUM_TAG_COLOR {
+  BLUE
+  BROWN
+  GRAY
+  GREEN
+  LIGHT_GRAY
+  ORANGE
+  PINK
+  PURPLE
+  RED
+  YELLOW
+}
+
+type Error {
+  code: String!
+  message: String
+}
+
+input FileInfoInput {
+  alternativeText: String
+  caption: String
+  name: String
+}
+
+input FloatFilterInput {
+  and: [Float]
+  between: [Float]
+  contains: Float
+  containsi: Float
+  endsWith: Float
+  eq: Float
+  eqi: Float
+  gt: Float
+  gte: Float
+  in: [Float]
+  lt: Float
+  lte: Float
+  ne: Float
+  not: FloatFilterInput
+  notContains: Float
+  notContainsi: Float
+  notIn: [Float]
+  notNull: Boolean
+  null: Boolean
+  or: [Float]
+  startsWith: Float
+}
+
+union GenericMorph =
+    Category
+  | City
+  | ComponentAddressAddress
+  | I18NLocale
+  | Product
+  | RelatedContent
+  | Resource
+  | Tag
+  | UploadFile
+  | UploadFolder
+  | UsersPermissionsPermission
+  | UsersPermissionsRole
+  | UsersPermissionsUser
+
+type I18NLocale {
+  code: String
+  createdAt: DateTime
+  name: String
+  updatedAt: DateTime
+}
+
+type I18NLocaleEntity {
+  attributes: I18NLocale
+  id: ID
+}
+
+type I18NLocaleEntityResponse {
+  data: I18NLocaleEntity
+}
+
+type I18NLocaleEntityResponseCollection {
+  data: [I18NLocaleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input I18NLocaleFiltersInput {
+  and: [I18NLocaleFiltersInput]
+  code: StringFilterInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: I18NLocaleFiltersInput
+  or: [I18NLocaleFiltersInput]
+  updatedAt: DateTimeFilterInput
+}
+
+input IDFilterInput {
+  and: [ID]
+  between: [ID]
+  contains: ID
+  containsi: ID
+  endsWith: ID
+  eq: ID
+  eqi: ID
+  gt: ID
+  gte: ID
+  in: [ID]
+  lt: ID
+  lte: ID
+  ne: ID
+  not: IDFilterInput
+  notContains: ID
+  notContainsi: ID
+  notIn: [ID]
+  notNull: Boolean
+  null: Boolean
+  or: [ID]
+  startsWith: ID
+}
+
+input IntFilterInput {
+  and: [Int]
+  between: [Int]
+  contains: Int
+  containsi: Int
+  endsWith: Int
+  eq: Int
+  eqi: Int
+  gt: Int
+  gte: Int
+  in: [Int]
+  lt: Int
+  lte: Int
+  ne: Int
+  not: IntFilterInput
+  notContains: Int
+  notContainsi: Int
+  notIn: [Int]
+  notNull: Boolean
+  null: Boolean
+  or: [Int]
+  startsWith: Int
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+input JSONFilterInput {
+  and: [JSON]
+  between: [JSON]
+  contains: JSON
+  containsi: JSON
+  endsWith: JSON
+  eq: JSON
+  eqi: JSON
+  gt: JSON
+  gte: JSON
+  in: [JSON]
+  lt: JSON
+  lte: JSON
+  ne: JSON
+  not: JSONFilterInput
+  notContains: JSON
+  notContainsi: JSON
+  notIn: [JSON]
+  notNull: Boolean
+  null: Boolean
+  or: [JSON]
+  startsWith: JSON
+}
+
+type Mutation {
+  """
+  Change user password. Confirm with the current password.
+  """
+  changePassword(
+    currentPassword: String!
+    password: String!
+    passwordConfirmation: String!
+  ): UsersPermissionsLoginPayload
+  createCategory(data: CategoryInput!): CategoryEntityResponse
+  createCity(data: CityInput!): CityEntityResponse
+  createProduct(data: ProductInput!): ProductEntityResponse
+  createRelatedContent(data: RelatedContentInput!): RelatedContentEntityResponse
+  createResource(data: ResourceInput!): ResourceEntityResponse
+  createTag(data: TagInput!): TagEntityResponse
+  createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
+  createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
+
+  """
+  Create a new role
+  """
+  createUsersPermissionsRole(
+    data: UsersPermissionsRoleInput!
+  ): UsersPermissionsCreateRolePayload
+
+  """
+  Create a new user
+  """
+  createUsersPermissionsUser(
+    data: UsersPermissionsUserInput!
+  ): UsersPermissionsUserEntityResponse!
+  deleteCategory(id: ID!): CategoryEntityResponse
+  deleteCity(id: ID!): CityEntityResponse
+  deleteProduct(id: ID!): ProductEntityResponse
+  deleteRelatedContent(id: ID!): RelatedContentEntityResponse
+  deleteResource(id: ID!): ResourceEntityResponse
+  deleteTag(id: ID!): TagEntityResponse
+  deleteUploadFile(id: ID!): UploadFileEntityResponse
+  deleteUploadFolder(id: ID!): UploadFolderEntityResponse
+
+  """
+  Delete an existing role
+  """
+  deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
+
+  """
+  Delete an existing user
+  """
+  deleteUsersPermissionsUser(id: ID!): UsersPermissionsUserEntityResponse!
+
+  """
+  Confirm an email users email address
+  """
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+
+  """
+  Request a reset password token
+  """
+  forgotPassword(email: String!): UsersPermissionsPasswordPayload
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  multipleUpload(
+    field: String
+    files: [Upload]!
+    ref: String
+    refId: ID
+  ): [UploadFileEntityResponse]!
+
+  """
+  Register a user
+  """
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  removeFile(id: ID!): UploadFileEntityResponse
+
+  """
+  Reset user password. Confirm with a code (resetToken from forgotPassword)
+  """
+  resetPassword(
+    code: String!
+    password: String!
+    passwordConfirmation: String!
+  ): UsersPermissionsLoginPayload
+  updateCategory(data: CategoryInput!, id: ID!): CategoryEntityResponse
+  updateCity(data: CityInput!, id: ID!): CityEntityResponse
+  updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  updateProduct(data: ProductInput!, id: ID!): ProductEntityResponse
+  updateRelatedContent(
+    data: RelatedContentInput!
+    id: ID!
+  ): RelatedContentEntityResponse
+  updateResource(data: ResourceInput!, id: ID!): ResourceEntityResponse
+  updateTag(data: TagInput!, id: ID!): TagEntityResponse
+  updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
+  updateUploadFolder(
+    data: UploadFolderInput!
+    id: ID!
+  ): UploadFolderEntityResponse
+
+  """
+  Update an existing role
+  """
+  updateUsersPermissionsRole(
+    data: UsersPermissionsRoleInput!
+    id: ID!
+  ): UsersPermissionsUpdateRolePayload
+
+  """
+  Update an existing user
+  """
+  updateUsersPermissionsUser(
+    data: UsersPermissionsUserInput!
+    id: ID!
+  ): UsersPermissionsUserEntityResponse!
+  upload(
+    field: String
+    file: Upload!
+    info: FileInfoInput
+    ref: String
+    refId: ID
+  ): UploadFileEntityResponse!
+}
+
+type Pagination {
+  page: Int!
+  pageCount: Int!
+  pageSize: Int!
+  total: Int!
+}
+
+input PaginationArg {
+  limit: Int
+  page: Int
+  pageSize: Int
+  start: Int
+}
+
+type Product {
+  Resource: ResourceEntityResponse
+  UTMCampaign: String
+  UTMMedium: String
+  UTMSource: String
+  archive: Boolean!
+  createdAt: DateTime
+  currency: ENUM_PRODUCT_CURRENCY
+  description: String
+  embbedCode: String
+  name: String!
+  notionItemId: String
+  price: Float
+  productLink: String
+  productPhoto(
+    filters: UploadFileFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UploadFileRelationResponseCollection
+  publishedAt: DateTime
+  slug: String
+  updatedAt: DateTime
+}
+
+type ProductEntity {
+  attributes: Product
+  id: ID
+}
+
+type ProductEntityResponse {
+  data: ProductEntity
+}
+
+type ProductEntityResponseCollection {
+  data: [ProductEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ProductFiltersInput {
+  Resource: ResourceFiltersInput
+  UTMCampaign: StringFilterInput
+  UTMMedium: StringFilterInput
+  UTMSource: StringFilterInput
+  and: [ProductFiltersInput]
+  archive: BooleanFilterInput
+  createdAt: DateTimeFilterInput
+  currency: StringFilterInput
+  description: StringFilterInput
+  embbedCode: StringFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: ProductFiltersInput
+  notionItemId: StringFilterInput
+  or: [ProductFiltersInput]
+  price: FloatFilterInput
+  productLink: StringFilterInput
+  publishedAt: DateTimeFilterInput
+  slug: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ProductInput {
+  Resource: ID
+  UTMCampaign: String
+  UTMMedium: String
+  UTMSource: String
+  archive: Boolean
+  currency: ENUM_PRODUCT_CURRENCY
+  description: String
+  embbedCode: String
+  name: String
+  notionItemId: String
+  price: Float
+  productLink: String
+  productPhoto: [ID]
+  publishedAt: DateTime
+  slug: String
+}
+
+type ProductRelationResponseCollection {
+  data: [ProductEntity!]!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type Query {
+  categories(
+    filters: CategoryFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): CategoryEntityResponseCollection!
+  category(id: ID): CategoryEntityResponse
+  cities(
+    countryFilter: Boolean
+    filters: CityFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): CityEntityResponseCollection
+  city(id: ID): CityEntityResponse
+  i18NLocale(id: ID): I18NLocaleEntityResponse
+  i18NLocales(
+    filters: I18NLocaleFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): I18NLocaleEntityResponseCollection
+  me: UsersPermissionsMe
+  product(id: ID): ProductEntityResponse
+  products(
+    filters: ProductFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): ProductEntityResponseCollection
+  relatedContent(id: ID): RelatedContentEntityResponse
+  relatedContents(
+    filters: RelatedContentFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): RelatedContentEntityResponseCollection
+  resource(id: ID): ResourceEntityResponse
+  resources(
+    dynamicZoneFilter: [String]
+    filters: ResourceFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): ResourceEntityResponseCollection
+  tag(id: ID): TagEntityResponse
+  tags(
+    filters: TagFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): TagEntityResponseCollection
+  uploadFile(id: ID): UploadFileEntityResponse
+  uploadFiles(
+    filters: UploadFileFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UploadFileEntityResponseCollection
+  uploadFolder(id: ID): UploadFolderEntityResponse
+  uploadFolders(
+    filters: UploadFolderFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UploadFolderEntityResponseCollection
+  usersPermissionsRole(id: ID): UsersPermissionsRoleEntityResponse
+  usersPermissionsRoles(
+    filters: UsersPermissionsRoleFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
+  usersPermissionsUsers(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserEntityResponseCollection
+}
+
+type RelatedContent {
+  Category(
+    filters: CategoryFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): CategoryRelationResponseCollection
+  RelatedContentType: ENUM_RELATEDCONTENT_RELATEDCONTENTTYPE
+  archive: Boolean!
+  createdAt: DateTime
+  description: String
+  media: UploadFileEntityResponse
+  notionItemId: String
+  publishedAt: DateTime
+  title: String!
+  updatedAt: DateTime
+  videoUrl: String
+}
+
+type RelatedContentEntity {
+  attributes: RelatedContent
+  id: ID
+}
+
+type RelatedContentEntityResponse {
+  data: RelatedContentEntity
+}
+
+type RelatedContentEntityResponseCollection {
+  data: [RelatedContentEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input RelatedContentFiltersInput {
+  Category: CategoryFiltersInput
+  RelatedContentType: StringFilterInput
+  and: [RelatedContentFiltersInput]
+  archive: BooleanFilterInput
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  id: IDFilterInput
+  not: RelatedContentFiltersInput
+  notionItemId: StringFilterInput
+  or: [RelatedContentFiltersInput]
+  publishedAt: DateTimeFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  videoUrl: StringFilterInput
+}
+
+input RelatedContentInput {
+  Category: [ID]
+  RelatedContentType: ENUM_RELATEDCONTENT_RELATEDCONTENTTYPE
+  archive: Boolean
+  description: String
+  media: ID
+  notionItemId: String
+  publishedAt: DateTime
+  title: String
+  videoUrl: String
+}
+
+type RelatedContentRelationResponseCollection {
+  data: [RelatedContentEntity!]!
+}
+
+type Resource {
+  Facebook: String
+  Instagram: String
+  LinkedIn: String
+  Pinterest: String
+  Products(
+    filters: ProductFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): ProductRelationResponseCollection
+  Twitter: String
+  UTMCampaign: String
+  UTMMedium: String
+  UTMSource: String
+  YouTube: String
+  address: [ResourceAddressDynamicZone]
+  analyticsURL: String
+  archive: Boolean!
+  category(
+    filters: CategoryFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): CategoryRelationResponseCollection
+  createdAt: DateTime
+  description: String
+  email: String
+  logo: UploadFileEntityResponse
+  mobileNumber: String
+  name: String!
+  notionItemId: String
+  publishedAt: DateTime
+  shortDescription: String
+  slug: String
+  tags(
+    filters: TagFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): TagRelationResponseCollection
+  type: ENUM_RESOURCE_TYPE
+  updatedAt: DateTime
+  url: String
+}
+
+union ResourceAddressDynamicZone = ComponentAddressAddress | Error
+
+scalar ResourceAddressDynamicZoneInput
+
+type ResourceEntity {
+  attributes: Resource
+  id: ID
+}
+
+type ResourceEntityResponse {
+  data: ResourceEntity
+}
+
+type ResourceEntityResponseCollection {
+  data: [ResourceEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ResourceFiltersInput {
+  Facebook: StringFilterInput
+  Instagram: StringFilterInput
+  LinkedIn: StringFilterInput
+  Pinterest: StringFilterInput
+  Products: ProductFiltersInput
+  Twitter: StringFilterInput
+  UTMCampaign: StringFilterInput
+  UTMMedium: StringFilterInput
+  UTMSource: StringFilterInput
+  YouTube: StringFilterInput
+  analyticsURL: StringFilterInput
+  and: [ResourceFiltersInput]
+  archive: BooleanFilterInput
+  category: CategoryFiltersInput
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  email: StringFilterInput
+  id: IDFilterInput
+  mobileNumber: StringFilterInput
+  name: StringFilterInput
+  not: ResourceFiltersInput
+  notionItemId: StringFilterInput
+  or: [ResourceFiltersInput]
+  publishedAt: DateTimeFilterInput
+  shortDescription: StringFilterInput
+  slug: StringFilterInput
+  tags: TagFiltersInput
+  type: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  url: StringFilterInput
+}
+
+input ResourceInput {
+  Facebook: String
+  Instagram: String
+  LinkedIn: String
+  Pinterest: String
+  Products: [ID]
+  Twitter: String
+  UTMCampaign: String
+  UTMMedium: String
+  UTMSource: String
+  YouTube: String
+  address: [ResourceAddressDynamicZoneInput!]
+  analyticsURL: String
+  archive: Boolean
+  category: [ID]
+  description: String
+  email: String
+  logo: ID
+  mobileNumber: String
+  name: String
+  notionItemId: String
+  publishedAt: DateTime
+  shortDescription: String
+  slug: String
+  tags: [ID]
+  type: ENUM_RESOURCE_TYPE
+  url: String
+}
+
+type ResourceRelationResponseCollection {
+  data: [ResourceEntity!]!
+}
+
+type ResponseCollectionMeta {
+  pagination: Pagination!
+}
+
+input StringFilterInput {
+  and: [String]
+  between: [String]
+  contains: String
+  containsi: String
+  endsWith: String
+  eq: String
+  eqi: String
+  gt: String
+  gte: String
+  in: [String]
+  lt: String
+  lte: String
+  ne: String
+  not: StringFilterInput
+  notContains: String
+  notContainsi: String
+  notIn: [String]
+  notNull: Boolean
+  null: Boolean
+  or: [String]
+  startsWith: String
+}
+
+type Tag {
+  Resource(
+    filters: ResourceFiltersInput
+    pagination: PaginationArg = {}
+    publicationState: PublicationState = LIVE
+    sort: [String] = []
+  ): ResourceRelationResponseCollection
+  color: ENUM_TAG_COLOR
+  createdAt: DateTime
+  name: String
+  notionItemId: String
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type TagEntity {
+  attributes: Tag
+  id: ID
+}
+
+type TagEntityResponse {
+  data: TagEntity
+}
+
+type TagEntityResponseCollection {
+  data: [TagEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input TagFiltersInput {
+  Resource: ResourceFiltersInput
+  and: [TagFiltersInput]
+  color: StringFilterInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: TagFiltersInput
+  notionItemId: StringFilterInput
+  or: [TagFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input TagInput {
+  Resource: [ID]
+  color: ENUM_TAG_COLOR
+  name: String
+  notionItemId: String
+  publishedAt: DateTime
+}
+
+type TagRelationResponseCollection {
+  data: [TagEntity!]!
+}
+
+"""
+The `Upload` scalar type represents a file upload.
+"""
+scalar Upload
+
+type UploadFile {
+  alternativeText: String
+  caption: String
+  createdAt: DateTime
+  ext: String
+  formats: JSON
+  hash: String!
+  height: Int
+  mime: String!
+  name: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [GenericMorph]
+  size: Float!
+  updatedAt: DateTime
+  url: String!
+  width: Int
+}
+
+type UploadFileEntity {
+  attributes: UploadFile
+  id: ID
+}
+
+type UploadFileEntityResponse {
+  data: UploadFileEntity
+}
+
+type UploadFileEntityResponseCollection {
+  data: [UploadFileEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UploadFileFiltersInput {
+  alternativeText: StringFilterInput
+  and: [UploadFileFiltersInput]
+  caption: StringFilterInput
+  createdAt: DateTimeFilterInput
+  ext: StringFilterInput
+  folder: UploadFolderFiltersInput
+  folderPath: StringFilterInput
+  formats: JSONFilterInput
+  hash: StringFilterInput
+  height: IntFilterInput
+  id: IDFilterInput
+  mime: StringFilterInput
+  name: StringFilterInput
+  not: UploadFileFiltersInput
+  or: [UploadFileFiltersInput]
+  previewUrl: StringFilterInput
+  provider: StringFilterInput
+  provider_metadata: JSONFilterInput
+  size: FloatFilterInput
+  updatedAt: DateTimeFilterInput
+  url: StringFilterInput
+  width: IntFilterInput
+}
+
+input UploadFileInput {
+  alternativeText: String
+  caption: String
+  ext: String
+  folder: ID
+  folderPath: String
+  formats: JSON
+  hash: String
+  height: Int
+  mime: String
+  name: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  size: Float
+  url: String
+  width: Int
+}
+
+type UploadFileRelationResponseCollection {
+  data: [UploadFileEntity!]!
+}
+
+type UploadFolder {
+  children(
+    filters: UploadFolderFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UploadFolderRelationResponseCollection
+  createdAt: DateTime
+  files(
+    filters: UploadFileFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UploadFileRelationResponseCollection
+  name: String!
+  parent: UploadFolderEntityResponse
+  path: String!
+  pathId: Int!
+  updatedAt: DateTime
+}
+
+type UploadFolderEntity {
+  attributes: UploadFolder
+  id: ID
+}
+
+type UploadFolderEntityResponse {
+  data: UploadFolderEntity
+}
+
+type UploadFolderEntityResponseCollection {
+  data: [UploadFolderEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UploadFolderFiltersInput {
+  and: [UploadFolderFiltersInput]
+  children: UploadFolderFiltersInput
+  createdAt: DateTimeFilterInput
+  files: UploadFileFiltersInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: UploadFolderFiltersInput
+  or: [UploadFolderFiltersInput]
+  parent: UploadFolderFiltersInput
+  path: StringFilterInput
+  pathId: IntFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input UploadFolderInput {
+  children: [ID]
+  files: [ID]
+  name: String
+  parent: ID
+  path: String
+  pathId: Int
+}
+
+type UploadFolderRelationResponseCollection {
+  data: [UploadFolderEntity!]!
+}
+
+type UsersPermissionsCreateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsDeleteRolePayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String! = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  blocked: Boolean
+  confirmed: Boolean
+  email: String
+  id: ID!
+  role: UsersPermissionsMeRole
+  username: String!
+}
+
+type UsersPermissionsMeRole {
+  description: String
+  id: ID!
+  name: String!
+  type: String
+}
+
+type UsersPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsPermission {
+  action: String!
+  createdAt: DateTime
+  role: UsersPermissionsRoleEntityResponse
+  updatedAt: DateTime
+}
+
+type UsersPermissionsPermissionEntity {
+  attributes: UsersPermissionsPermission
+  id: ID
+}
+
+input UsersPermissionsPermissionFiltersInput {
+  action: StringFilterInput
+  and: [UsersPermissionsPermissionFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: UsersPermissionsPermissionFiltersInput
+  or: [UsersPermissionsPermissionFiltersInput]
+  role: UsersPermissionsRoleFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+type UsersPermissionsPermissionRelationResponseCollection {
+  data: [UsersPermissionsPermissionEntity!]!
+}
+
+input UsersPermissionsRegisterInput {
+  email: String!
+  password: String!
+  username: String!
+}
+
+type UsersPermissionsRole {
+  createdAt: DateTime
+  description: String
+  name: String!
+  permissions(
+    filters: UsersPermissionsPermissionFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsPermissionRelationResponseCollection
+  type: String
+  updatedAt: DateTime
+  users(
+    filters: UsersPermissionsUserFiltersInput
+    pagination: PaginationArg = {}
+    sort: [String] = []
+  ): UsersPermissionsUserRelationResponseCollection
+}
+
+type UsersPermissionsRoleEntity {
+  attributes: UsersPermissionsRole
+  id: ID
+}
+
+type UsersPermissionsRoleEntityResponse {
+  data: UsersPermissionsRoleEntity
+}
+
+type UsersPermissionsRoleEntityResponseCollection {
+  data: [UsersPermissionsRoleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UsersPermissionsRoleFiltersInput {
+  and: [UsersPermissionsRoleFiltersInput]
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  id: IDFilterInput
+  name: StringFilterInput
+  not: UsersPermissionsRoleFiltersInput
+  or: [UsersPermissionsRoleFiltersInput]
+  permissions: UsersPermissionsPermissionFiltersInput
+  type: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  users: UsersPermissionsUserFiltersInput
+}
+
+input UsersPermissionsRoleInput {
+  description: String
+  name: String
+  permissions: [ID]
+  type: String
+  users: [ID]
+}
+
+type UsersPermissionsUpdateRolePayload {
+  ok: Boolean!
+}
+
+type UsersPermissionsUser {
+  blocked: Boolean
+  confirmed: Boolean
+  createdAt: DateTime
+  email: String!
+  provider: String
+  role: UsersPermissionsRoleEntityResponse
+  updatedAt: DateTime
+  username: String!
+}
+
+type UsersPermissionsUserEntity {
+  attributes: UsersPermissionsUser
+  id: ID
+}
+
+type UsersPermissionsUserEntityResponse {
+  data: UsersPermissionsUserEntity
+}
+
+type UsersPermissionsUserEntityResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input UsersPermissionsUserFiltersInput {
+  and: [UsersPermissionsUserFiltersInput]
+  blocked: BooleanFilterInput
+  confirmationToken: StringFilterInput
+  confirmed: BooleanFilterInput
+  createdAt: DateTimeFilterInput
+  email: StringFilterInput
+  id: IDFilterInput
+  not: UsersPermissionsUserFiltersInput
+  or: [UsersPermissionsUserFiltersInput]
+  password: StringFilterInput
+  provider: StringFilterInput
+  resetPasswordToken: StringFilterInput
+  role: UsersPermissionsRoleFiltersInput
+  updatedAt: DateTimeFilterInput
+  username: StringFilterInput
+}
+
+input UsersPermissionsUserInput {
+  blocked: Boolean
+  confirmationToken: String
+  confirmed: Boolean
+  email: String
+  password: String
+  provider: String
+  resetPasswordToken: String
+  role: ID
+  username: String
+}
+
+type UsersPermissionsUserRelationResponseCollection {
+  data: [UsersPermissionsUserEntity!]!
+}

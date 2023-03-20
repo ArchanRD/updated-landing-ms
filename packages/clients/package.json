@@ -1,0 +1,42 @@
+{
+  "name": "@ms/clients",
+  "version": "0.0.0",
+  "author": "Tirth Gajjar",
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
+  "scripts": {
+    "generate:prod": "yarn prisma generate --data-proxy",
+    "generate:dev": "yarn prisma generate --data-proxy",
+    "build": "./../../node_modules/.bin/prisma generate --data-proxy && tsc --build",
+    "dev": "dotenv -e .env.local -- yarn generate:dev && tsc --build --watch",
+    "db:push": "dotenv -e .env.local -- npx prisma db push && yarn generate:prod",
+    "db:pull": "dotenv -e .env.local -- npx prisma db pull && yarn generate:prod",
+    "db:reset": "dotenv -e .env.local -- npx prisma migrate reset",
+    "db:studio": "dotenv -e .env.local -- npx prisma studio",
+    "connect:databases": "concurrently -c \"#10b981.bold,#bada55.bold\" \"yarn:connect:database:*\"",
+    "connect:database:develop": "pscale connect --org tirth designbits develop --port 3309",
+    "connect:database:main": "pscale connect --org tirth designbits main-2022-07-01-09-50-03 --port ${SHADOW_DATABASE_PORT:-3306}",
+    "connect:database:sls-test": "pscale connect --org tirth designbits sls-test --port 3311"
+  },
+  "files": [
+    "build/*"
+  ],
+  "dependencies": {
+    "@pothos/plugin-prisma": "^3.41.3",
+    "@prisma/client": "4.11.0",
+    "chalk": "^4.1.2",
+    "joi": "^17.8.3",
+    "lodash.groupby": "^4.6.0",
+    "prettier": "^2.8.4",
+    "prisma-joi-generator": "git+https://github.com/tirthGajjar/prisma-joi-generator.git"
+  },
+  "devDependencies": {
+    "@prisma/internals": "^4.11.0",
+    "@types/lodash.groupby": "^4.6.7",
+    "@types/prettier": "^2.7.2",
+    "lodash.groupby": "^4.6.0",
+    "prettier": "^2.8.4",
+    "prisma": "^4.11.0"
+  },
+  "license": "ISC"
+}

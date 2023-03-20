@@ -1,0 +1,11 @@
+query currentUser {
+  currentUser {
+    name
+    email
+    image
+    savedResources {
+      resourceId
+      savedAt
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resources",
+  "info": {
+    "singularName": "resource",
+    "pluralName": "resources",
+    "displayName": "Resource",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "archive": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Business service",
+        "Products",
+        "Social service",
+        "Services",
+        "Data & analytics"
+      ]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "email": {
+      "type": "email"
+    },
+    "address": {
+      "type": "dynamiczone",
+      "components": [
+        "address.address"
+      ]
+    },
+    "notionItemId": {
+      "type": "string"
+    },
+    "analyticsURL": {
+      "type": "string"
+    },
+    "mobileNumber": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "Resources"
+    },
+    "url": {
+      "type": "string"
+    },
+    "Products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "Resource"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "Resource"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "Facebook": {
+      "type": "string"
+    },
+    "Twitter": {
+      "type": "string"
+    },
+    "LinkedIn": {
+      "type": "string"
+    },
+    "Instagram": {
+      "type": "string"
+    },
+    "YouTube": {
+      "type": "string"
+    },
+    "Pinterest": {
+      "type": "string"
+    },
+    "UTMCampaign": {
+      "type": "string"
+    },
+    "UTMSource": {
+      "type": "string"
+    },
+    "UTMMedium": {
+      "type": "string"
+    }
+  }
+}

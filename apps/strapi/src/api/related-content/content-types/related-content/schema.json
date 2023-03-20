@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "related_contents",
+  "info": {
+    "singularName": "related-content",
+    "pluralName": "related-contents",
+    "displayName": "RelatedContent",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "archive": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "RelatedContentType": {
+      "type": "enumeration",
+      "enum": [
+        "Related Blog",
+        "Stats",
+        "Youtube Video"
+      ]
+    },
+    "Category": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "RelatedContent"
+    },
+    "notionItemId": {
+      "type": "string"
+    },
+    "videoUrl": {
+      "type": "string"
+    }
+  }
+}

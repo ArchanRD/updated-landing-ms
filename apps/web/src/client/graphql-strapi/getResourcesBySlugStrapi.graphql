@@ -1,0 +1,93 @@
+query GetResourceBySlugStrapi($resourceSlug: StringFilterInput!) {
+  resources(filters: { and: [ {slug: $resourceSlug} , {archive:{eq:false}}]}) {
+    data {
+      id
+      attributes {
+        notionItemId
+        name
+        archive
+        slug
+        shortDescription
+        description
+        logo {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        url
+        analyticsURL
+        mobileNumber
+        address {
+          ... on ComponentAddressAddress {
+            __typename
+            cityInfo
+            id
+            address
+          }
+        }
+        email
+        Products {
+          data {
+            attributes {
+              name
+              archive
+              description
+              notionItemId
+              embbedCode
+              currency
+              productLink
+              price
+              productPhoto {
+                data {
+                  attributes {
+                    name
+                    alternativeText
+                    url
+                    previewUrl
+                    related {
+                      __typename
+                    }
+                    formats
+                    caption
+                  }
+                }
+              }
+              slug
+              updatedAt
+            }
+          }
+        }
+        tags {
+          data {
+            attributes {
+              notionItemId
+              name
+            }
+          }
+        }
+        type
+        category {
+          data {
+            attributes {
+              name
+              notionItemId
+              bgColor
+              logo {
+                data {
+                  attributes {
+                    url
+                    previewUrl
+                    caption
+                  }
+                }
+              }
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+}

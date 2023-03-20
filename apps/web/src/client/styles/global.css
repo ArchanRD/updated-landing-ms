@@ -1,0 +1,174 @@
+@import "@untitledui/core/dist/tailwind.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input#react-select-long-value-select-input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.products-item > iframe {
+  width: 100% !important;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(7.4px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.designbits-gradient {
+  background-image: linear-gradient(
+    90deg,
+    #7b61ff 0%,
+    #f097bd 47%,
+    #ef94a4 80.59%,
+    #7b61ff 124.02%
+  );
+  background-size: 600% 200%;
+  animation: gradient 6s linear infinite;
+  animation-direction: alternate;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.3) 25%,
+        rgba(255, 255, 255, 0) 100%
+      )
+      no-repeat border-box,
+    linear-gradient(
+        45deg,
+        #f17c581d,
+        #e945841d,
+        #24aadb1d,
+        #27dbb11d,
+        #ffdc181d,
+        #ff38061d
+      )
+      no-repeat border-box;
+  background-size: 600% 100%;
+  animation: gradient 10s linear infinite;
+  animation-direction: alternate;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+progress[value] {
+  appearance: none;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(255, 255, 255, 0.05) inset;
+  color: dodgerblue;
+  /* order: 1; */
+  width: 100%;
+}
+
+/* WebKit styles */
+progress[value]::-webkit-progress-bar {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+progress[value]::-webkit-progress-value {
+  background-image: linear-gradient(
+    to right,
+    rgb(16, 160, 173),
+    rgb(0, 160, 182),
+    rgb(0, 160, 191),
+    rgb(0, 159, 200),
+    rgb(0, 158, 209),
+    rgb(0, 156, 217),
+    rgb(0, 154, 224),
+    rgb(0, 151, 230),
+    rgb(51, 147, 234),
+    rgb(81, 143, 237),
+    rgb(106, 138, 238),
+    rgb(130, 133, 236),
+    rgb(151, 126, 233),
+    rgb(171, 119, 227),
+    rgb(190, 110, 219),
+    rgb(207, 101, 208),
+    rgb(222, 91, 196),
+    rgb(235, 81, 182),
+    rgb(246, 71, 166),
+    rgb(255, 62, 149)
+  );
+  transition: width 300ms linear;
+}
+
+/* Firefox styles */
+progress[value]::-moz-progress-bar {
+  background-image: linear-gradient(
+    to right,
+    rgb(16, 160, 173),
+    rgb(0, 160, 182),
+    rgb(0, 160, 191),
+    rgb(0, 159, 200),
+    rgb(0, 158, 209),
+    rgb(0, 156, 217),
+    rgb(0, 154, 224),
+    rgb(0, 151, 230),
+    rgb(51, 147, 234),
+    rgb(81, 143, 237),
+    rgb(106, 138, 238),
+    rgb(130, 133, 236),
+    rgb(151, 126, 233),
+    rgb(171, 119, 227),
+    rgb(190, 110, 219),
+    rgb(207, 101, 208),
+    rgb(222, 91, 196),
+    rgb(235, 81, 182),
+    rgb(246, 71, 166),
+    rgb(255, 62, 149)
+  );
+  transition: width 300ms linear;
+}

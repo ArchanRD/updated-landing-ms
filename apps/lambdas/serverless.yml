@@ -1,0 +1,65 @@
+service: ms-lambdas
+frameworkVersion: ^3.19.0
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  profile: SLSUserMS
+  region: us-east-1
+  stage: dev
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:*Bucket
+        - s3:*Object
+        - s3:PutObjectAcl
+        - s3:GetObjectAcl
+      Resource:
+        - "arn:aws:s3:::${env:S3_BUCKET_MS_IMAGES}/*"
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000"
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-esbuild
+  - serverless-offline
+  - serverless-lift
+
+package:
+  individually: true
+
+constructs:
+  resourceLogos:
+    type: storage
+    extensions:
+      bucket:
+        Properties:
+          BucketName: ${env:S3_BUCKET_MS_IMAGES}
+          PublicAccessBlockConfiguration:
+            BlockPublicAcls: false
+            BlockPublicPolicy: false
+            IgnorePublicAcls: false
+            RestrictPublicBuckets: false
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: true
+    exclude: ["aws-sdk", "aws-lambda"]
+    target: "node16"
+    define: { "require.resolve": undefined }
+    keepNames: true
+    platform: "node"
+    concurrency: 10
+
+functions:
+  seedRepositoryData:
+    handler: src/functions/seed-from-notion/seed-repository-data/index.seedRepositoryData
+    timeout: 900
+    url: true
+    events:
+      - schedule:
+          rate: rate(6 hours)

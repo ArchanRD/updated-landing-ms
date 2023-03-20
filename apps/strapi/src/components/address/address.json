@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_address_addresses",
+  "info": {
+    "displayName": "Address",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "cityInfo": {
+      "type": "customField",
+      "customField": "plugin::city-selector.city-selector"
+    }
+  }
+}

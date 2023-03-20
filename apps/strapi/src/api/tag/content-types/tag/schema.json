@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags",
+  "info": {
+    "singularName": "tag",
+    "pluralName": "tags",
+    "displayName": "Tags",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "LIGHT_GRAY",
+        "GRAY",
+        "BROWN",
+        "ORANGE",
+        "YELLOW",
+        "GREEN",
+        "BLUE",
+        "PURPLE",
+        "PINK",
+        "RED"
+      ],
+      "default": "LIGHT_GRAY"
+    },
+    "notionItemId": {
+      "type": "string"
+    },
+    "Resource": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::resource.resource",
+      "inversedBy": "tags"
+    }
+  }
+}

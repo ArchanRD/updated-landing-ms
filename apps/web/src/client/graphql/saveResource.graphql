@@ -1,0 +1,14 @@
+mutation saveResource($resourceId: String!) {
+  saveResource(resourceId: $resourceId) {
+    id
+    resourceId
+    savedAt
+    userId
+  }
+}
+mutation removeSavedResource($resourceId: String!) {
+  removeSavedResource(resourceId: $resourceId) {
+    id
+    resourceId
+  }
+}

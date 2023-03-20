@@ -1,0 +1,49 @@
+query GetSearchResultsStrapi($resourceSlug: StringFilterInput,$tagName: TagFiltersInput,$countryName:[String] ) {
+  resources(filters:{ and:[{tags:$tagName},{or: [{slug:$resourceSlug}, {description: $resourceSlug}]}]},dynamicZoneFilter:$countryName) {
+    data {
+      id
+      attributes {
+    		 notionItemId
+        name
+        slug
+        shortDescription
+        description
+        archive
+        logo {
+          data {
+            attributes {
+              url
+              previewUrl
+            }
+          }
+        }
+        analyticsURL
+        tags {
+          data {
+            attributes {
+              notionItemId
+              name
+            }
+          }
+        }
+        url
+        type
+        address {
+          ... on ComponentAddressAddress {
+            id
+            cityInfo
+          }
+        }
+        category {
+          data {
+            attributes {
+              notionItemId
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}

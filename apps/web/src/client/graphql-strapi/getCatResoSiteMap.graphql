@@ -1,0 +1,18 @@
+query categoryAndResourcesSiteMap {
+  resources(filters:{archive:{eq:false}}) {
+    data {
+      attributes {
+        slug
+        updatedAt
+      }
+    }
+  }
+  categories(filters:{archive:{eq:false}}) {
+    data {
+      attributes {
+        slug 
+        updatedAt
+      }
+    }
+  }
+}

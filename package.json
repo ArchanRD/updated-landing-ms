@@ -1,0 +1,33 @@
+{
+  "name": "ms",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "cli-progress": "^3.11.2",
+    "concurrently": "^7.3.0",
+    "dotenv-cli": "^6.0.0",
+    "eslint-config-custom": "*",
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "resolutions": {
+    "graphql": "^16.6.0",
+    "**/graphql": "^16.6.0"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.19"
+}
