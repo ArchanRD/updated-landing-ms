@@ -28,7 +28,8 @@
     "joi": "^17.8.3",
     "lodash.groupby": "^4.6.0",
     "prettier": "^2.8.4",
-    "prisma-joi-generator": "git+https://github.com/tirthGajjar/prisma-joi-generator.git"
+    "prisma-joi-generator": "git+https://github.com/tirthGajjar/prisma-joi-generator.git",
+    "untitled-icons": "^1.0.0"
   },
   "devDependencies": {
     "@prisma/internals": "^4.11.0",
