@@ -34,8 +34,7 @@
     "countries-code": "^1.1.0",
     "globby": "^13.1.1",
     "rimraf": "^3.0.2",
-    "svgo": "^2.8.0",
-    "icons": "yarn build"
+    "svgo": "^2.8.0"
   },
   "dependencies": {
     "copyfiles": "^2.4.1"

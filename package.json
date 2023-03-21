@@ -28,6 +28,8 @@
     "graphql": "^16.6.0",
     "**/graphql": "^16.6.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@untitledui/icons": "^1.0.0"
+  },
   "packageManager": "yarn@1.22.19"
 }
